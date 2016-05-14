@@ -1,9 +1,9 @@
-var path = require('path')
+var path = require("path")
 
 module.exports = {
   context: path.join(__dirname, "app"),
   entry: {
-    javascript: "./application.js",
+    javascript: "./application.js.jsx",
     html: "./index.html"
   },
   module: {
@@ -11,9 +11,9 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: "babel",
         query: {
-          presets: ['es2015']
+          presets: ["es2015", "react"]
         }
       },
       {
