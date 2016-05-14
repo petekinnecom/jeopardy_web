@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+bin/webpack --config webpack.spec.config.js
+./node_modules/.bin/jasmine
