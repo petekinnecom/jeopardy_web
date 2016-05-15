@@ -1,5 +1,5 @@
-import { START_MENU, LOADING } from "./gameStates"
-import { START_GAME } from "./actions"
+import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./gameStates"
+import { START_GAME, GAME_LOADED } from "./actions"
 
 export const defaultState = {
   gameState: START_MENU
@@ -10,7 +10,12 @@ export default (state, action) => {
     return defaultState
   }
 
-  if (action.type === START_GAME) {
-    return {...state, gameState: LOADING}
+  switch(action.type) {
+    case START_GAME:
+      return {...state, gameState: GAME_LOADING}
+    case GAME_LOADED:
+      return {...state, gameState: PLAYING_GAME}
+    default:
+      state
   }
 }

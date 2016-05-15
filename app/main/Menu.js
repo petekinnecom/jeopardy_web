@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import Link from "../shared/Link"
-import { startGame } from "./actions"
+import { startGame, gameLoaded } from "./actions"
 
 export class Menu extends Component {
   render() {
@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     startGame: () => {
       dispatch(startGame())
+      setTimeout(()=>{
+        dispatch(gameLoaded({id: "game_id"}))
+      }, 1000)
     }
   }
 }

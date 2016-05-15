@@ -4,7 +4,7 @@ import { mount } from "enzyme"
 import ConnectedMenu, { Menu } from "../../app/main/Menu.js"
 import { initializeStore } from "../../app/store"
 
-import { START_MENU, LOADING } from "../../app/main/gameStates"
+import { START_MENU, GAME_LOADING, PLAYING_GAME } from "../../app/main/gameStates"
 
 describe("main/Menu", ()=>{
   let component
@@ -44,9 +44,14 @@ describe("main/Menu", ()=>{
       expect(store.getState().main.gameState).toEqual(START_MENU)
     })
 
-    it("starts the game", ()=>{
+    it("starts the game", (done)=>{
       component.find("Link").simulate("click")
-      expect(store.getState().main.gameState).toEqual(LOADING)
+      expect(store.getState().main.gameState).toEqual(GAME_LOADING)
+
+      setTimeout(()=>{
+        expect(store.getState().main.gameState).toEqual(PLAYING_GAME)
+        done()
+      }, 1100)
     })
 
   })

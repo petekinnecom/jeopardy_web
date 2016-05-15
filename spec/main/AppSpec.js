@@ -5,7 +5,7 @@ import { mount, shallow } from "enzyme"
 import ConnectedApp, { App } from "../../app/main/App"
 import { initializeStore } from "../../app/store"
 
-import { START_MENU, LOADING } from "../../app/main/gameStates"
+import { START_MENU, GAME_LOADING } from "../../app/main/gameStates"
 
 describe("main/App", ()=>{
   let component
@@ -24,7 +24,7 @@ describe("main/App", ()=>{
 
     it("renders the Loading screen", ()=>{
       component = shallow(
-        <App gameState={LOADING}/>
+        <App gameState={GAME_LOADING}/>
       )
       expect(component.find("div").text()).toMatch(/Loading/i)
     })

@@ -2,16 +2,18 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import ConnectedMenu from "./Menu"
+import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./gameStates"
 
 export class App extends Component {
 
   render() {
-    console.log(this.props.gameState)
     switch (this.props.gameState){
-      case "START_MENU":
+      case START_MENU:
         return ( <ConnectedMenu /> )
-      case "LOADING":
-        return (<div>LOADING!</div>)
+      case GAME_LOADING:
+        return (<div>GAME_LOADING!</div>)
+      case PLAYING_GAME:
+        return (<div>PLAYING_GAME</div>)
       default:
         return (<div>unknown state :(</div>)
     }
