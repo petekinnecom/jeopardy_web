@@ -6,7 +6,7 @@ import ConnectedMenu from "./main/Menu"
 
 import { initializeStore } from "./store"
 
-const store = initializeStore({text: "default text"})
+const store = initializeStore()
 
 ReactDOM.render(
   <Provider store={store}>

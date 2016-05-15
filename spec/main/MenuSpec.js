@@ -5,7 +5,7 @@ import { mount } from "enzyme"
 import ConnectedMenu, { Menu } from "../../app/main/Menu.js"
 import { initializeStore } from "../../app/store"
 
-import { MENU, LOADING } from "../../app/main/gameStates"
+import { START_MENU, LOADING } from "../../app/main/gameStates"
 
 describe("main/Menu", ()=>{
   let component
@@ -34,11 +34,15 @@ describe("main/Menu", ()=>{
   describe("integration-ish", ()=>{
     let store
     beforeEach(()=>{
-      store = initializeStore({main: {gameState: MENU}})
+      store = initializeStore()
 
       component = mount(
         <ConnectedMenu store={store} />
       )
+    })
+
+    it("defaults to MENU state", ()=>{
+      expect(store.getState().main.gameState).toEqual(START_MENU)
     })
 
     it("starts the game", ()=>{
@@ -48,27 +52,3 @@ describe("main/Menu", ()=>{
 
   })
 })
-
-
-// describe("Menu", ()=>{
-//   var component
-//
-//   beforeEach(()=>{
-//     let store = initializeStore({text: "Hello from redux"})
-//
-//     component = mount(
-//       <HelloSpan store={store} />
-//     )
-//   })
-//
-//   it("says hello", ()=>{
-//     expect(component.text()).toEqual("Hello from redux")
-//   })
-//
-//   describe("integration spec", ()=>{
-//     it("listens to click", ()=>{
-//       component.simulate("click")
-//       expect(component.text()).toEqual("updated by redux")
-//     })
-//   })
-// })
