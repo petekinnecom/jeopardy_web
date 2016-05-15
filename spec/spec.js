@@ -1,2 +1,2 @@
 require("./mathSpec")
-require("./HelloSpanSpec")
+require("./main/MenuSpec")

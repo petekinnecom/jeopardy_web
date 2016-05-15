@@ -1,13 +1,13 @@
 import { createStore } from "redux"
 
+import mainReducer from "./main/Reducer"
+
 const initializeReducer = (initialState) => {
+  
   return (state=initialState, action) => {
-
-    if (action.type === "UPDATE_TEXT") {
-      return {...state, text: "updated by redux"}
+    return {
+      main: mainReducer(state, action)
     }
-
-    return {...state}
   }
 }
 
