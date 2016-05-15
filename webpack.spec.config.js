@@ -2,7 +2,10 @@ var path = require("path")
 
 module.exports = {
   context: path.join(__dirname, "spec"),
-  entry: "./spec.js",
+  entry: {
+    javascript: "./spec.js",
+    html: "./index.html"
+  },
   module: {
     loaders: [
       {
@@ -13,10 +16,21 @@ module.exports = {
           presets: ["es2015", "react"]
         }
       },
+      {
+        test: /\.html$/,
+        loader: "file?name=[name].[ext]",
+      },
     ],
+
+  },
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+    'cheerio': 'window',
   },
   output: {
     filename: "spec.js",
     path: path.join(__dirname, "/specBuild"),
-  }
+  },
 }

@@ -1,1 +1,2 @@
-import {} from './mathSpec'
+require("./mathSpec")
+require("./HelloSpanSpec")
