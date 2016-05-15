@@ -1,5 +1,4 @@
 import React from "react"
-import { Provider } from "redux"
 import { mount } from "enzyme"
 
 import ConnectedMenu, { Menu } from "../../app/main/Menu.js"

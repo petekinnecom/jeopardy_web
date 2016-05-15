@@ -2,7 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 
-import ConnectedMenu from "./main/Menu"
+import ConnectedApp from "./main/App"
 
 import { initializeStore } from "./store"
 
@@ -10,7 +10,7 @@ const store = initializeStore()
 
 ReactDOM.render(
   <Provider store={store}>
-     <ConnectedMenu />
+     <ConnectedApp />
   </Provider>,
   document.getElementById("application-container")
 );
