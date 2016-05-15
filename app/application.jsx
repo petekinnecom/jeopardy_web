@@ -1,17 +1,11 @@
 import React from "react"
 import ReactDOM from "react-dom"
-
 import { Provider } from "react-redux"
-import { createStore } from "redux"
 
-import { add } from "./math"
 import HelloSpan from "./HelloSpan.jsx"
+import { initializeStore } from "./store"
 
-let reducer = (state={text: "hello from redux"}, action) => {
-  return state
-}
-
-let store = createStore(reducer)
+const store = initializeStore({text: "default text"})
 
 ReactDOM.render(
   <Provider store={store}>
