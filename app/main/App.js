@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import ConnectedMenu from "./Menu"
+import Loading from "../shared/Loading"
 import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./gameStates"
 
 export class App extends Component {
@@ -11,7 +12,7 @@ export class App extends Component {
       case START_MENU:
         return ( <ConnectedMenu /> )
       case GAME_LOADING:
-        return (<div>GAME_LOADING!</div>)
+        return (<Loading />)
       case PLAYING_GAME:
         return (<div>PLAYING_GAME</div>)
       default:

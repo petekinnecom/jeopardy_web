@@ -15,10 +15,10 @@ describe("main/App", ()=>{
       component = shallow(
         <App gameState={START_MENU}/>
       )
-      
+
       // Can't tell if this is a consequence of using connect
       // function or whether a side effect of shallow
-      
+
       expect(component.find("Connect(Menu)").length).toEqual(1)
     })
 
@@ -26,7 +26,7 @@ describe("main/App", ()=>{
       component = shallow(
         <App gameState={GAME_LOADING}/>
       )
-      expect(component.find("div").text()).toMatch(/Loading/i)
+      expect(component.find("Loading").length).toEqual(1)
     })
 
   })
