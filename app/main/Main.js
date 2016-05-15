@@ -3,12 +3,12 @@ import { connect } from "react-redux"
 
 import ConnectedMenu from "./Menu"
 import Loading from "../shared/Loading"
-import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./gameStates"
+import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./states"
 
-export class App extends Component {
+export class Main extends Component {
 
   render() {
-    switch (this.props.gameState){
+    switch (this.props.mainState){
       case START_MENU:
         return ( <ConnectedMenu /> )
       case GAME_LOADING:
@@ -23,8 +23,8 @@ export class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    gameState: state.main.gameState
+    mainState: state.main.state
   }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect(mapStateToProps)(Main)
