@@ -1,20 +1,24 @@
 import React from "react"
-import ReactTestUtils from "react/lib/ReactTestUtils"
+import { createStore, Provider } from "redux"
 import HelloSpan from "../app/HelloSpan.jsx"
 import { mount } from "enzyme"
 
 describe('HelloSpan', ()=>{
-  let TestUtils = ReactTestUtils
   var component
 
   beforeEach(()=>{
-    component = TestUtils.renderIntoDocument(
-      <HelloSpan />
+    let reducer = (state={text: "Hello from redux"}, action) => {
+      return state
+    }
+
+    let store = createStore(reducer)
+
+    component = mount(
+      <HelloSpan store={store} />
     )
   })
 
   it('says hello', ()=>{
-    let span = mount(<HelloSpan />)
-    expect(span.text()).toEqual("Hello from HelloSpan")
+    expect(component.text()).toEqual("Hello from redux")
   })
 })
