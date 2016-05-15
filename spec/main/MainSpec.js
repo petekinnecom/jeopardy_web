@@ -5,7 +5,7 @@ import { mount, shallow } from "enzyme"
 import ConnectedMain, { Main } from "../../app/main/Main"
 import { initializeStore } from "../../app/store"
 
-import { START_MENU, GAME_LOADING } from "../../app/main/states"
+import { START_MENU, GAME_LOADING, PLAYING_GAME } from "../../app/main/states"
 
 describe("main/Main", ()=>{
   let component
@@ -29,6 +29,14 @@ describe("main/Main", ()=>{
       expect(component.find("Loading").length).toEqual(1)
     })
 
+    it("renders the Game", ()=>{
+      component = shallow(
+        <Main mainState={PLAYING_GAME} gameState="dummyGameState"/>
+      )
+      expect(component.find("Game").length).toEqual(1)
+      expect(component.find("Game").props().state).toEqual("dummyGameState")
+    })
+
   })
 
   describe("integration-ish", ()=>{
@@ -45,5 +53,8 @@ describe("main/Main", ()=>{
     it("defaults to MENU state", ()=>{
       expect(component.find("Menu").length).toEqual(1)
     })
+
+    //WORK HERE, add integration spec for LOADING/GAME
+    
   })
 })

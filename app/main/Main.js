@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import ConnectedMenu from "./Menu"
+import Game from "../game/Game"
 import Loading from "../shared/Loading"
 import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./states"
 
@@ -14,7 +15,7 @@ export class Main extends Component {
       case GAME_LOADING:
         return (<Loading />)
       case PLAYING_GAME:
-        return (<div>PLAYING_GAME</div>)
+        return (<Game state={this.props.gameState}/>)
       default:
         return (<div>unknown state :(</div>)
     }
@@ -23,7 +24,8 @@ export class Main extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainState: state.main.state
+    mainState: state.main.state,
+    gameState: state.game.state,
   }
 }
 
