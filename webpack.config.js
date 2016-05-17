@@ -1,4 +1,5 @@
 var path = require("path")
+var webpackConf = require("./webpack/config")
 
 module.exports = {
   context: path.join(__dirname, "app"),
@@ -8,18 +9,8 @@ module.exports = {
   },
   module: {
     loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: "babel",
-        query: {
-          presets: ["es2015", "react", "stage-2"]
-        }
-      },
-      {
-        test: /\.html$/,
-        loader: "file?name=[name].[ext]",
-      },
+      webpackConf.loaders.jsx,
+      webpackConf.loaders.html
     ],
   },
   output: {

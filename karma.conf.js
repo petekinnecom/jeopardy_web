@@ -1,6 +1,5 @@
-// Karma configuration
-// Generated on Tue May 17 2016 05:44:26 GMT-0600 (MDT)
 
+var webpackConf = require("./webpack/config")
 module.exports = function(config) {
   config.set({
 
@@ -34,22 +33,10 @@ module.exports = function(config) {
       devtool: 'inline-source-map', //just do inline source maps instead of the default
       module: {
         loaders: [
-          {
-            test: /\.jsx?$/,
-            exclude: /node_modules/,
-            loader: 'babel',
-            query: {
-              presets: ["es2015", "react", "stage-2"]
-            }
-          }
+          webpackConf.loaders.jsx
         ]
       },
-      externals: {
-        'react/addons': true,
-        'react/lib/ExecutionEnvironment': true,
-        'react/lib/ReactContext': true,
-        'cheerio': 'window',
-      },
+      externals: webpackConf.specExternals,
     },
     webpackServer: {
       noInfo: true //please don't spam the console when running in karma!
