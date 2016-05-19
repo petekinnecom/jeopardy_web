@@ -9,13 +9,13 @@ import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./states"
 export class Main extends Component {
 
   render() {
-    switch (this.props.mainState){
+    switch (this.props.mainDisplay){
       case START_MENU:
         return ( <ConnectedMenu /> )
       case GAME_LOADING:
         return (<Loading />)
       case PLAYING_GAME:
-        return (<Game state={this.props.gameState}/>)
+        return (<Game display={this.props.gameDisplay}/>)
       default:
         return (<div>unknown state :(</div>)
     }
@@ -24,8 +24,8 @@ export class Main extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mainState: state.main.state,
-    gameState: state.game.state,
+    mainDisplay: state.main.display,
+    gameDisplay: state.game.display,
   }
 }
 

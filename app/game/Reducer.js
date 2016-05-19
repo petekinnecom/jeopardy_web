@@ -7,7 +7,7 @@ export default (state = {}, action) => {
   switch (action.type){
     case START_GAME:
       return {
-        state: START,
+        display: START,
         board: action.data,
       }
     default:

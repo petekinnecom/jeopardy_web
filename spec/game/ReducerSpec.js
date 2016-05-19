@@ -16,7 +16,7 @@ describe("game/Reducer", ()=> {
     }
 
     const newState = Reducer(state, action)
-    expect(newState.state).toEqual(START)
+    expect(newState.display).toEqual(START)
     expect(newState.board).toEqual("game_data")
   })
 })

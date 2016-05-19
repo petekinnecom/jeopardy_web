@@ -11,7 +11,7 @@ describe("game/Game", ()=>{
   describe("unit-ish", ()=>{
     beforeEach(()=>{
       component = mount(
-        <Game gameState={START}/>
+        <Game display={START}/>
       )
     })
 
