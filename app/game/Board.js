@@ -1,9 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 
 export default class Board extends Component {
-  // const propTypes = {
-  //   next: PropTypes.func.isRequired
-  // };
 
   render () {
     return <div>
@@ -11,4 +8,7 @@ export default class Board extends Component {
       <button onClick={this.props.next}>Next</button>
     </div>
   }
+}
+Board.propTypes = {
+  next: PropTypes.func.isRequired
 }
