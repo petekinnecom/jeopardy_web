@@ -23,9 +23,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     startGame: () => {
       dispatch(startGame())
-      setTimeout(()=>{
-        dispatch(gameLoaded({id: "game_id"}))
-      }, 1000)
+      fetch("/board.json.html")
+        .then((response) => {
+          return response.json()
+        .then((board) => {
+          dispatch(gameLoaded(board))
+        })
+        .catch(()=>{console.log('noooooo')})
+      })
     }
   }
 }

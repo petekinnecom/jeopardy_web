@@ -5,7 +5,8 @@ module.exports = {
   context: path.join(__dirname, "app"),
   entry: {
     javascript: "./application.jsx",
-    html: "./index.html"
+    html: "./index.html",
+    html: "./fixtures/board.json.html"
   },
   module: {
     loaders: [
