@@ -5,8 +5,10 @@ module.exports = {
   context: path.join(__dirname, "app"),
   entry: {
     javascript: "./application.jsx",
-    html: "./index.html",
-    html: "./fixtures/board.json.html"
+    html: [
+      "./index.html",
+      "./fixtures/board.json.html"
+    ]¡
   },
   module: {
     loaders: [

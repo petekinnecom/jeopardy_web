@@ -1,16 +1,20 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import Board from "./board"
+import {nextButtonPressed} from "./actions"
 
 import { START } from "./states"
 
-export default class Game extends Component {
+class Game extends Component {
 
   render() {
     switch (this.props.display) {
       case START:
-        return (<div>Round 1 Categories</div>)
+        return <Board next={this.props.nextButtonPressed} />
       default:
         return (<div>unknown game state</div>)
     }
   }
 }
+
+export default connect(null, {nextButtonPressed})(Game)
