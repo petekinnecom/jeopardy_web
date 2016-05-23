@@ -1,16 +1,19 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import Board from "./board"
 
 import { START } from "./states"
 
-export default class Game extends Component {
+class Game extends Component {
 
   render() {
     switch (this.props.display) {
       case START:
-        return (<div>Round 1 Categories</div>)
+        return <Board next={() => {}} />
       default:
         return (<div>unknown game state</div>)
     }
   }
 }
+
+export default connect()(Game)
