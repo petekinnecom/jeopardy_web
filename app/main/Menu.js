@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
         .then((board) => {
           dispatch(gameLoaded(board))
         })
-        .catch(()=>{console.log('noooooo')})
+        .catch((e)=>{console.log('noooooo', e)})
       })
     }
   }
