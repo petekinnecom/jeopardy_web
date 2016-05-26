@@ -1,4 +1,4 @@
-export const json = {
+export const boardFixture = {
   "number": "4680",
   "rounds": [
     {

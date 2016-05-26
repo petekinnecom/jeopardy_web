@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 
 import Link from "../shared/Link"
 import { startGame, gameLoaded } from "./actions"
-import { json } from "../fixtures/normalizedBoard"
+import { boardFixture } from "../fixtures/normalizedBoard"
 
 export class Menu extends Component {
   render() {
@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
     startGame: () => {
       dispatch(startGame())
       setTimeout(()=>{
-        dispatch(gameLoaded(json))
+        dispatch(gameLoaded(boardFixture))
       }, 1)
     }
   }

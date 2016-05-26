@@ -1,7 +1,7 @@
 import React, {Component} from "react"
 import {connect} from "react-redux"
 
-import {CATEGORIES, QUESTION, ANSWER} from "./states"
+import { DONE, CATEGORIES, QUESTION, ANSWER} from "./states"
 
 export class Game extends Component {
 
@@ -18,6 +18,16 @@ export class Game extends Component {
           <div onClick={this.props.next}>
             {this.props.question}
           </div>
+        )
+      case ANSWER:
+        return (
+          <div onClick={this.props.next}>
+            {this.props.answer}
+          </div>
+        )
+      case DONE:
+        return (
+          <div>Thanks for playing</div>
         )
       default:
         return (
