@@ -1,9 +1,9 @@
 import React from "react"
 import { mount } from "enzyme"
 
-import Game from "../../app/game/Game"
+import ConnectedGame, { Game } from "../../app/game/Game"
 
-import { START } from "../../app/game/states"
+import { START, CATEGORIES } from "../../app/game/states"
 
 describe("game/Game", ()=>{
   let component
@@ -11,12 +11,15 @@ describe("game/Game", ()=>{
   describe("unit-ish", ()=>{
     beforeEach(()=>{
       component = mount(
-        <Game gameState={START}/>
+        <Game
+          state={CATEGORIES}
+          categories={["category_1", "category_2"]}
+        />
       )
     })
 
     it("renders the start link", ()=>{
-      expect(component.text()).toEqual("Round 1 Categories")
+      expect(component.text()).toEqual("category_1category_2")
     })
 
   })

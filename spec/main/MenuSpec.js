@@ -8,40 +8,32 @@ import { START_MENU, GAME_LOADING, PLAYING_GAME } from "../../app/main/states"
 
 describe("main/Menu", ()=>{
   let component
+  let startGameSpy
 
-  describe("unit-ish", ()=>{
-    let startGameSpy
+  beforeEach(()=>{
 
-    beforeEach(()=>{
-
-      startGameSpy = jasmine.createSpy()
-      component = mount(
-        <Menu startGame={startGameSpy}/>
-      )
-    })
-
-    it("renders the start link", ()=>{
-      expect(component.find("Link").text()).toEqual("Start New Game")
-    })
-
-    it("triggers a game start", ()=>{
-      component.find("Link").simulate("click")
-      expect(startGameSpy).toHaveBeenCalled()
-    })
+    startGameSpy = jasmine.createSpy()
+    component = mount(
+      <Menu startGame={startGameSpy}/>
+    )
   })
 
-  describe("integration-ish", ()=>{
+  it("renders the start link", ()=>{
+    expect(component.find("Link").text()).toEqual("Start New Game")
+  })
+
+  it("triggers a game start", ()=>{
+    component.find("Link").simulate("click")
+    expect(startGameSpy).toHaveBeenCalled()
+  })
+
+  describe("ConnectedMenu", ()=>{
     let store
     beforeEach(()=>{
       store = initializeStore()
-
       component = mount(
         <ConnectedMenu store={store} />
       )
-    })
-
-    it("defaults to MENU state", ()=>{
-      expect(store.getState().main.state).toEqual(START_MENU)
     })
 
     it("starts the game", (done)=>{
@@ -51,8 +43,7 @@ describe("main/Menu", ()=>{
       setTimeout(()=>{
         expect(store.getState().main.state).toEqual(PLAYING_GAME)
         done()
-      }, 1100)
+      }, 10)
     })
-
   })
 })

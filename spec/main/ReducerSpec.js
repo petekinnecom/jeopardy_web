@@ -26,5 +26,14 @@ describe("main/Reducer", ()=> {
     expect(newState.state).toEqual(PLAYING_GAME)
   })
 
+  it("returns state for other actions", () => {
+    const state = {state: "stub"}
+    const action = {type: "UNKNOWN"}
+
+    const newState = Reducer(state, action)
+
+    expect(newState).toEqual(state)
+  })
+
 })
 

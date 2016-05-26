@@ -16,6 +16,6 @@ export default (state, action) => {
     case GAME_LOADED:
       return {...state, state: PLAYING_GAME}
     default:
-      state
+      return state
   }
 }

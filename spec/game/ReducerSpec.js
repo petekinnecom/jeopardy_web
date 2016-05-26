@@ -1,6 +1,6 @@
 import Reducer from "../../app/game/Reducer"
-import { START } from "../../app/game/states"
-import { START_GAME } from "../../app/main/actions"
+import { CATEGORIES } from "../../app/game/states"
+import { GAME_LOADED } from "../../app/main/actions"
 
 describe("game/Reducer", ()=> {
   it("defaults game to empty object", ()=> {
@@ -8,16 +8,21 @@ describe("game/Reducer", ()=> {
     expect(newState).toEqual({})
   })
 
-  it("sets state to START when the game has started", ()=> {
+  it("Begins on the first round, category, challenge", ()=> {
     const state = {}
     const action = {
-      type: START_GAME,
-      data: "game_data"
+      type: GAME_LOADED,
+      board: "boardData"
     }
 
     const newState = Reducer(state, action)
-    expect(newState.state).toEqual(START)
-    expect(newState.board).toEqual("game_data")
+    expect(newState.state).toEqual(CATEGORIES)
+    expect(newState.board).toEqual("boardData")
+    expect(newState.player).toEqual({
+      round: 0,
+      category: 0,
+      challenge: 0
+    })
   })
 })
 
