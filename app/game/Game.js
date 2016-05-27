@@ -3,31 +3,39 @@ import {connect} from "react-redux"
 
 import { DONE, CATEGORIES, QUESTION, ANSWER} from "./states"
 
+import Categories from "./views/Categories"
+import Question from "./views/Question"
+import Answer from "./views/Answer"
+import Done from "./views/Done"
+
 export class Game extends Component {
 
   render() {
     switch (this.props.display) {
       case CATEGORIES:
         return (
-          <ul onClick={this.props.next}>
-            {this.props.categories.map((c)=>{return (<li>{c}</li>)})}
-          </ul>
+          <Categories
+            categories={this.props.categories}
+            next={this.props.next}
+          />
         )
       case QUESTION:
         return (
-          <div onClick={this.props.next}>
-            {this.props.question}
-          </div>
+          <Question
+            question={this.props.question}
+            next={this.props.next}
+          />
         )
       case ANSWER:
         return (
-          <div onClick={this.props.next}>
-            {this.props.answer}
-          </div>
+          <Answer
+            answer={this.props.answer}
+            next={this.props.next}
+          />
         )
       case DONE:
         return (
-          <div>Thanks for playing</div>
+          <Done />
         )
       default:
         return (
