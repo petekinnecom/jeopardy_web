@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
     })
 
   return {
-    display: state.game.display,
+    display: state.game.player.display,
     categories: categoryNames,
     roundName: round.name,
     category: category.name,
