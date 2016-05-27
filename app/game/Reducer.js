@@ -1,6 +1,6 @@
 import { ANSWER, CATEGORIES, DONE, QUESTION } from "./states"
 import { GAME_LOADED } from "../main/actions"
-import { NEXT } from "../game/actions"
+import { NEXT, PREVIOUS } from "../game/actions"
 
 export default (state = {}, action) => {
   if (!action) {
@@ -15,8 +15,8 @@ export default (state = {}, action) => {
           display: CATEGORIES,
           round: 0,
           category: 0,
-          challenge: 0,
-        },
+          challenge: 0
+        }
       }
 
     case NEXT:
@@ -25,9 +25,16 @@ export default (state = {}, action) => {
         ...state,
         player: {
           ...player,
-          history: state.player,
-        },
+          history: state.player
+        }
       }
+
+    case PREVIOUS:
+      return {
+        ...state,
+        player: state.player.history
+      }
+
     default:
       return state
   }
@@ -55,7 +62,7 @@ function nextPlayer(state) {
     return {
       ...state.player,
       display: QUESTION,
-      challenge: state.player.challenge + 1,
+      challenge: state.player.challenge + 1
     }
   }
   if (state.player.category + 1 < currentRound.categories.length) {
@@ -63,7 +70,7 @@ function nextPlayer(state) {
       ...state.player,
       display: QUESTION,
       category: state.player.category + 1,
-      challenge: 0,
+      challenge: 0
     }
   }
 
@@ -72,7 +79,7 @@ function nextPlayer(state) {
       display: CATEGORIES,
       round: state.player.round + 1,
       category: 0,
-      challenge: 0,
+      challenge: 0
     }
   }
 

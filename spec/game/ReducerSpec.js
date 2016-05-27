@@ -190,5 +190,27 @@ describe("game/Reducer", ()=> {
       expect(newState.player.display).toEqual(DONE)
     })
   })
+
+  describe("PREVOUS action", () => {
+    it("reverts to the players history record", ()=> {
+      const player = {
+        display: QUESTION,
+        round: 0,
+        category: 0,
+        challenge: 0,
+        history: "historyStub"
+      }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+      }
+      const action = previous()
+      const newState = Reducer(state, action)
+
+      expect(newState.player).toEqual("historyStub")
+    })
+
+  })
 })
 
