@@ -1,7 +1,7 @@
 import Reducer from "../../app/game/Reducer"
 import { ANSWER, CATEGORIES, DONE, QUESTION } from "../../app/game/states"
 import { GAME_LOADED } from "../../app/main/actions"
-import { next } from "../../app/game/actions"
+import { next, previous } from "../../app/game/actions"
 
 import { boardFixture } from "../../app/fixtures/normalizedBoard"
 
@@ -24,20 +24,24 @@ describe("game/Reducer", ()=> {
       display: CATEGORIES,
       round: 0,
       category: 0,
-      challenge: 0
+      challenge: 0,
     })
+    expect(newState.history).toEqual([])
   })
 
   describe("NEXT action", ()=> {
     it("moves to the first question after displaying the categories", ()=>{
-      const state = {
-        board: boardFixture,
-        player: {
+      const player = {
           display: CATEGORIES,
           round: 0,
           category: 0,
           challenge: 0,
         }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: []
       }
       const action = next()
       const newState = Reducer(state, action)
@@ -46,19 +50,23 @@ describe("game/Reducer", ()=> {
         display: QUESTION,
         round: 0,
         category: 0,
-        challenge: 0
+        challenge: 0,
       })
+      expect(newState.history).toEqual([player])
     })
 
     it("moves to the answer after displaying the question", ()=> {
-      const state = {
-        board: boardFixture,
-        player: {
+      const player = {
           display: QUESTION,
           round: 0,
           category: 0,
           challenge: 0,
         }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: []
       }
       const action = next()
       const newState = Reducer(state, action)
@@ -67,19 +75,23 @@ describe("game/Reducer", ()=> {
         display: ANSWER,
         round: 0,
         category: 0,
-        challenge: 0
+        challenge: 0,
       })
+      expect(newState.history).toEqual([player])
     })
 
     it("moves to the next challenge after displaying the answer", ()=> {
-      const state = {
-        board: boardFixture,
-        player: {
+      const player = {
           display: ANSWER,
           round: 0,
           category: 0,
           challenge: 0,
         }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: []
       }
       const action = next()
       const newState = Reducer(state, action)
@@ -88,19 +100,23 @@ describe("game/Reducer", ()=> {
         display: QUESTION,
         round: 0,
         category: 0,
-        challenge: 1
+        challenge: 1,
       })
+      expect(newState.history).toEqual([player])
     })
 
     it("moves to the next category when needed", ()=> {
-      const state = {
-        board: boardFixture,
-        player: {
+      const player = {
           display: ANSWER,
           round: 0,
           category: 0,
           challenge: 4,
         }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: []
       }
       const action = next()
       const newState = Reducer(state, action)
@@ -109,19 +125,23 @@ describe("game/Reducer", ()=> {
         display: QUESTION,
         round: 0,
         category: 1,
-        challenge: 0
+        challenge: 0,
       })
+      expect(newState.history).toEqual([player])
     })
 
     it("displays the next round's categories before starting the round", ()=> {
-      const state = {
-        board: boardFixture,
-        player: {
+      const player = {
           display: ANSWER,
           round: 0,
           category: 5,
           challenge: 4,
         }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: []
       }
       const action = next()
       const newState = Reducer(state, action)
@@ -130,19 +150,23 @@ describe("game/Reducer", ()=> {
         display: CATEGORIES,
         round: 1,
         category: 0,
-        challenge: 0
+        challenge: 0,
       })
+      expect(newState.history).toEqual([player])
     })
 
     it("moves to the next round when needed", ()=> {
-      const state = {
-        board: boardFixture,
-        player: {
+      const player = {
           display: ANSWER,
           round: 0,
           category: 5,
           challenge: 4,
         }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: []
       }
       const action = next()
       const newState = Reducer(state, action)
@@ -151,23 +175,47 @@ describe("game/Reducer", ()=> {
         display: CATEGORIES,
         round: 1,
         category: 0,
-        challenge: 0
+        challenge: 0,
       })
+      expect(newState.history).toEqual([player])
     })
 
     it("ends the game when needed", ()=> {
-      const state = {
-        board: boardFixture,
-        player: {
+      const player = {
           display: ANSWER,
           round: 2,
           category: 0,
           challenge: 0,
         }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: []
       }
       const action = next()
       const newState = Reducer(state, action)
       expect(newState.player.display).toEqual(DONE)
+    })
+
+    it("pushes the prev player to the front of the history stack", ()=>{
+      const player = {
+        display: ANSWER,
+        round: 0,
+        category: 5,
+        challenge: 4,
+      }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        history: [{history: "stub"}]
+      }
+      const action = next()
+      const newState = Reducer(state, action)
+
+      expect(newState.history).toEqual([player, {history: "stub"}])
+
     })
   })
 })
