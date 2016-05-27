@@ -17,16 +17,16 @@ export default (state = {}, action) => {
           category: 0,
           challenge: 0,
         },
-        history: []
       }
 
     case NEXT:
       const player = nextPlayer(state)
-      const history = ([state.player]).concat(state.history)
       return {
         ...state,
-        player: player,
-        history: history,
+        player: {
+          ...player,
+          history: state.player,
+        },
       }
     default:
       return state
