@@ -10,7 +10,7 @@ export default (state = {}, action) => {
   switch (action.type) {
     case GAME_LOADED:
       return {
-        state: CATEGORIES,
+        display: CATEGORIES,
         board: action.board,
         player: {
           round: 0,
@@ -23,24 +23,24 @@ export default (state = {}, action) => {
       const currentRound = state.board.rounds[state.player.round]
       const currentCategory = currentRound.categories[state.player.category]
 
-      if (state.state == CATEGORIES) {
+      if (state.display == CATEGORIES) {
         return {
           ...state,
-          state: QUESTION
+          display: QUESTION
         }
       }
 
-      if (state.state == QUESTION) {
+      if (state.display == QUESTION) {
         return {
           ...state,
-          state: ANSWER
+          display: ANSWER
         }
       }
 
       if (state.player.challenge + 1 < currentCategory.challenges.length) {
         return {
           ...state,
-          state: QUESTION,
+          display: QUESTION,
           player: {
             ...state.player,
             challenge: state.player.challenge + 1,
@@ -50,7 +50,7 @@ export default (state = {}, action) => {
       if (state.player.category + 1 < currentRound.categories.length) {
         return {
           ...state,
-          state: QUESTION,
+          display: QUESTION,
           player: {
             ...state.player,
             category: state.player.category + 1,
@@ -62,7 +62,7 @@ export default (state = {}, action) => {
       if (state.player.round + 1 < state.board.rounds.length) {
         return {
           ...state,
-          state: CATEGORIES,
+          display: CATEGORIES,
           player: {
             round: state.player.round + 1,
             category: 0,
@@ -73,7 +73,7 @@ export default (state = {}, action) => {
 
       return {
         ...state,
-        state: DONE
+        display: DONE
       }
 
     default:

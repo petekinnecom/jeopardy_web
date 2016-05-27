@@ -6,7 +6,7 @@ import { DONE, CATEGORIES, QUESTION, ANSWER} from "./states"
 export class Game extends Component {
 
   render() {
-    switch (this.props.state) {
+    switch (this.props.display) {
       case CATEGORIES:
         return (
           <ul onClick={this.props.next}>
@@ -31,7 +31,7 @@ export class Game extends Component {
         )
       default:
         return (
-          <div>unknown state: {this.props.state}</div>
+          <div>unknown display: {this.props.display}</div>
         )
     }
   }
@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
     })
 
   return {
-    state: state.game.state,
+    display: state.game.display,
     categories: categoryNames,
     roundName: round.name,
     category: category.name,

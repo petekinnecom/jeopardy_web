@@ -38,10 +38,10 @@ describe("main/Menu", ()=>{
 
     it("starts the game", (done)=>{
       component.find("Link").simulate("click")
-      expect(store.getState().main.state).toEqual(GAME_LOADING)
+      expect(store.getState().main.display).toEqual(GAME_LOADING)
 
       setTimeout(()=>{
-        expect(store.getState().main.state).toEqual(PLAYING_GAME)
+        expect(store.getState().main.display).toEqual(PLAYING_GAME)
         done()
       }, 10)
     })

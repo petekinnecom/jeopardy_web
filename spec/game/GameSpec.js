@@ -8,19 +8,17 @@ import { START, CATEGORIES } from "../../app/game/states"
 describe("game/Game", ()=>{
   let component
 
-  describe("unit-ish", ()=>{
-    beforeEach(()=>{
-      component = mount(
-        <Game
-          state={CATEGORIES}
-          categories={["category_1", "category_2"]}
-        />
-      )
-    })
-
-    it("renders the start link", ()=>{
-      expect(component.text()).toEqual("category_1category_2")
-    })
-
+  beforeEach(()=>{
+    component = mount(
+      <Game
+        display={CATEGORIES}
+        categories={["category_1", "category_2"]}
+      />
+    )
   })
+
+  it("renders the start link", ()=>{
+    expect(component.text()).toEqual("category_1category_2")
+  })
+
 })

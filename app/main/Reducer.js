@@ -2,7 +2,7 @@ import { START_MENU, GAME_LOADING, PLAYING_GAME } from "./states"
 import { START_GAME, GAME_LOADED } from "./actions"
 
 export const defaultState = {
-  state: START_MENU
+  display: START_MENU
 }
 
 export default (state, action) => {
@@ -12,9 +12,9 @@ export default (state, action) => {
 
   switch(action.type) {
     case START_GAME:
-      return {...state, state: GAME_LOADING}
+      return {...state, display: GAME_LOADING}
     case GAME_LOADED:
-      return {...state, state: PLAYING_GAME}
+      return {...state, display: PLAYING_GAME}
     default:
       return state
   }

@@ -12,7 +12,7 @@ describe("main/Main", ()=>{
 
   it("renders the Menu", ()=>{
     component = shallow(
-      <Main mainState={START_MENU}/>
+      <Main mainDisplay={START_MENU}/>
     )
 
     expect(component.find("Connect(Menu)").length).toEqual(1)
@@ -20,7 +20,7 @@ describe("main/Main", ()=>{
 
   it("renders the Loading screen", ()=>{
     component = shallow(
-      <Main mainState={GAME_LOADING}/>
+      <Main mainDisplay={GAME_LOADING}/>
     )
 
     expect(component.find("Loading").length).toEqual(1)
@@ -29,11 +29,11 @@ describe("main/Main", ()=>{
 
   it("renders the Game", ()=>{
     component = shallow(
-      <Main mainState={PLAYING_GAME} gameState="dummyGameState"/>
+      <Main mainDisplay={PLAYING_GAME} gameDisplay="dummyGameState"/>
     )
 
     expect(component.find("Connect(Game)").length).toEqual(1)
-    expect(component.find("Connect(Game)").props().state).toEqual("dummyGameState")
+    expect(component.find("Connect(Game)").props().display).toEqual("dummyGameState")
   })
 
   describe("ConnectedMain", ()=>{
@@ -53,8 +53,8 @@ describe("main/Main", ()=>{
         </Provider>
       )
       expect(component.find("Main").props()).toEqual({
-        mainState: mainStub,
-        gameState: gameStub
+        mainDisplay: mainStub,
+        gameDisplay: gameStub
       })
 
     })
