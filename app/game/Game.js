@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import {connect} from "react-redux"
 
 import { DONE, CATEGORIES, QUESTION, ANSWER} from "./states"
+import { next, previous } from "./actions"
 
 import Categories from "./views/Categories"
 import Question from "./views/Question"
@@ -23,6 +24,8 @@ export class Game extends Component {
       case QUESTION:
         return (
           <Question
+            category={this.props.category}
+            value={this.props.value}
             question={this.props.question}
             next={this.props.next}
             previous={this.props.previous}
@@ -73,7 +76,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    next: () => {dispatch({type: "NEXT"}) }
+    next: () => {dispatch(next()) },
+    previous: ()=> {dispatch(previous())}
   }
 }
 
