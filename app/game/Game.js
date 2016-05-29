@@ -17,6 +17,7 @@ export class Game extends Component {
           <Categories
             categories={this.props.categories}
             next={this.props.next}
+            previous={this.props.previous}
           />
         )
       case QUESTION:
@@ -24,6 +25,7 @@ export class Game extends Component {
           <Question
             question={this.props.question}
             next={this.props.next}
+            previous={this.props.previous}
           />
         )
       case ANSWER:
@@ -31,11 +33,14 @@ export class Game extends Component {
           <Answer
             answer={this.props.answer}
             next={this.props.next}
+            previous={this.props.previous}
           />
         )
       case DONE:
         return (
-          <Done />
+          <Done
+            previous={this.props.previous}
+          />
         )
       default:
         return (
