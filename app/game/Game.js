@@ -17,6 +17,7 @@ export class Game extends Component {
           <Categories
             categories={this.props.categories}
             next={this.props.next}
+            nextText="next"
             previous={this.props.previous}
           />
         )
