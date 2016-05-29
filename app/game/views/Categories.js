@@ -3,9 +3,9 @@ import React, { Component } from "react"
 export default class Categories extends Component {
 
   _names() {
-    return this.props.categories.map((name)=>{
+    return this.props.categories.map((name, i)=>{
       return (
-        <li>{name}</li>
+        <li key={`category-${i}`}>{name}</li>
       )
     })
   }

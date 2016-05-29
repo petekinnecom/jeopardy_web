@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-export default class Question extends Component {
+export default class Challenge extends Component {
   render() {
     return (
       <div>
@@ -26,9 +26,14 @@ export default class Question extends Component {
             {this.props.category}
           </div>
 
-          <div className="challenge-body">
+          <div className="challenge-question">
             {this.props.question}
           </div>
+
+          <div className="challenge-answer">
+            {this.props.answer}
+          </div>
+
         </div>
 
         <div className="layout-footer">
@@ -37,7 +42,7 @@ export default class Question extends Component {
             className="layout-next"
             onClick={this.props.next}
           >
-            next...
+            {this.props.nextText}...
           </a>
         </div>
       </div>

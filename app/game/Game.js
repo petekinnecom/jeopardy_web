@@ -5,9 +5,8 @@ import { DONE, CATEGORIES, QUESTION, ANSWER} from "./states"
 import { next, previous } from "./actions"
 
 import Categories from "./views/Categories"
-import Question from "./views/Question"
-import Answer from "./views/Answer"
 import Done from "./views/Done"
+import Challenge from "./views/Challenge"
 
 export class Game extends Component {
 
@@ -23,19 +22,24 @@ export class Game extends Component {
         )
       case QUESTION:
         return (
-          <Question
+          <Challenge
             category={this.props.category}
             value={this.props.value}
             question={this.props.question}
             next={this.props.next}
+            nextText="answer"
             previous={this.props.previous}
           />
         )
       case ANSWER:
         return (
-          <Answer
+          <Challenge
+            category={this.props.category}
+            value={this.props.value}
+            question={this.props.question}
             answer={this.props.answer}
             next={this.props.next}
+            nextText="next"
             previous={this.props.previous}
           />
         )

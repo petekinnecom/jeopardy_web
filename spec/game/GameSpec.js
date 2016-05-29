@@ -10,9 +10,9 @@ describe("game/Game", ()=>{
     const component = shallow(
       <Game
         display={CATEGORIES}
-        categories={"categoriesStub"}
-        next={"nextStub"}
-        previous={"previousStub"}
+        categories="categoriesStub"
+        next="nextStub"
+        previous="previousStub"
       />
     )
     expect(component.find("Categories").props()).toEqual({
@@ -26,15 +26,22 @@ describe("game/Game", ()=>{
     const component = shallow(
       <Game
         display={QUESTION}
-        question={"questionStub"}
-        next={"nextStub"}
-        previous={"previousStub"}
+        answer="answerStub"
+        question="questionStub"
+        category="categoryStub"
+        value="valueStub"
+        next="nextStub"
+        previous="previousStub"
       />
     )
-    expect(component.find("Question").props()).toEqual({
+    expect(component.find("Challenge").props().answer).toEqual(undefined)
+    expect(component.find("Challenge").props()).toEqual({
       question: "questionStub",
       next: "nextStub",
-      previous: "previousStub"
+      previous: "previousStub",
+      nextText: "answer",
+      category: "categoryStub",
+      value: "valueStub",
     })
   })
 
@@ -42,15 +49,22 @@ describe("game/Game", ()=>{
     const component = shallow(
       <Game
         display={ANSWER}
-        answer={"answerStub"}
-        next={"nextStub"}
-        previous={"previousStub"}
+        answer="answerStub"
+        question="questionStub"
+        category="categoryStub"
+        value="valueStub"
+        next="nextStub"
+        previous="previousStub"
       />
     )
-    expect(component.find("Answer").props()).toEqual({
+    expect(component.find("Challenge").props()).toEqual({
       answer: "answerStub",
+      question: "questionStub",
       next: "nextStub",
-      previous: "previousStub"
+      previous: "previousStub",
+      nextText: "next",
+      category: "categoryStub",
+      value: "valueStub",
     })
   })
 
@@ -58,7 +72,7 @@ describe("game/Game", ()=>{
     const component = shallow(
       <Game
         display={DONE}
-        previous={"previousStub"}
+        previous="previousStub"
       />
     )
     expect(component.find("Done").props()).toEqual({
