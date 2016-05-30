@@ -1,0 +1,12 @@
+#!/bin/bash -ex
+
+# because /shows/ are static, we only copy application.js, index.html.
+# new files must be manually added
+
+rm -rf build/*
+bin/webpack
+ssh petekinne.com rm /var/apps/jeopardy/application.js
+ssh petekinne.com rm /var/apps/jeopardy/index.html
+scp -r build/application.js petekinne.com:/var/apps/jeopardy/application.js
+scp -r build/index.html petekinne.com:/var/apps/jeopardy/index.html
+
