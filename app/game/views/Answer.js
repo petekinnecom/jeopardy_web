@@ -13,6 +13,7 @@ export default class Answer extends Component {
         nextText="next"
         previous={this.props.previous}
         voiceText={this.props.answer}
+        speak={this.props.speak}
       />
     )
   }

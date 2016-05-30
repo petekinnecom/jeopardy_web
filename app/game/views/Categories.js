@@ -25,6 +25,7 @@ export default class Categories extends Component {
         next={this.props.next}
         nextText="next"
         voiceText={voiceText}
+        speak={this.props.speak}
       >
         <h3 className="category-title">Categories:</h3>
         {this._names()}

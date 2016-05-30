@@ -8,6 +8,8 @@ export default class Done extends Component {
         previous={this.props.previous}
         next={this.props.next}
         nextText="menu"
+        voiceText="Thanks for playing"
+        speak={this.props.speak}
       >
         <h1>Thanks for playing</h1>
       </Layout>

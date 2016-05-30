@@ -13,12 +13,14 @@ describe("game/Game", ()=>{
         categories="categoriesStub"
         next="nextStub"
         previous="previousStub"
+        speak="speakStub"
       />
     )
     expect(component.find("Categories").props()).toEqual({
       categories: "categoriesStub",
       next: "nextStub",
-      previous: "previousStub"
+      previous: "previousStub",
+      speak: "speakStub",
     })
   })
 
@@ -32,6 +34,7 @@ describe("game/Game", ()=>{
         value="valueStub"
         next="nextStub"
         previous="previousStub"
+        speak="speakStub"
       />
     )
     expect(component.find("Question").props().answer).toEqual(undefined)
@@ -39,6 +42,7 @@ describe("game/Game", ()=>{
       question: "questionStub",
       next: "nextStub",
       previous: "previousStub",
+      speak: "speakStub",
       nextText: "answer",
       category: "categoryStub",
       value: "valueStub",
@@ -55,6 +59,7 @@ describe("game/Game", ()=>{
         value="valueStub"
         next="nextStub"
         previous="previousStub"
+        speak="speakStub"
       />
     )
     expect(component.find("Answer").props()).toEqual({
@@ -62,6 +67,7 @@ describe("game/Game", ()=>{
       question: "questionStub",
       next: "nextStub",
       previous: "previousStub",
+      speak: "speakStub",
       nextText: "next",
       category: "categoryStub",
       value: "valueStub",
@@ -73,11 +79,13 @@ describe("game/Game", ()=>{
       <Game
         display={DONE}
         previous="previousStub"
+        speak="speakStub"
         finish="finishStub"
       />
     )
     expect(component.find("Done").props()).toEqual({
       previous: "previousStub",
+      speak: "speakStub",
       next: "finishStub"
     })
   })
@@ -88,6 +96,7 @@ describe("game/Game", ()=>{
         display={GAME_INFO}
         next="nextStub"
         previous="previousStub"
+        speak="speakStub"
         finish="finishStub"
         airDate="2014-01-31"
         showNumber="4038"
@@ -97,7 +106,8 @@ describe("game/Game", ()=>{
       previous: null,
       next: "nextStub",
       airDate: "2014-01-31",
-      showNumber: "4038"
+      showNumber: "4038",
+      speak: "speakStub",
     })
 
   })

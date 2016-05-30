@@ -23,6 +23,7 @@ export class Game extends Component {
             next={this.props.next}
             airDate={this.props.airDate}
             showNumber={this.props.showNumber}
+            speak={this.props.speak}
           />
         )
       case CATEGORIES:
@@ -31,6 +32,7 @@ export class Game extends Component {
             categories={this.props.categories}
             next={this.props.next}
             previous={this.props.previous}
+            speak={this.props.speak}
           />
         )
       case QUESTION:
@@ -42,6 +44,7 @@ export class Game extends Component {
             next={this.props.next}
             nextText="answer"
             previous={this.props.previous}
+            speak={this.props.speak}
           />
         )
       case ANSWER:
@@ -54,6 +57,7 @@ export class Game extends Component {
             next={this.props.next}
             nextText="next"
             previous={this.props.previous}
+            speak={this.props.speak}
           />
         )
       case DONE:
@@ -61,6 +65,7 @@ export class Game extends Component {
           <Done
             previous={this.props.previous}
             next={this.props.finish}
+            speak={this.props.speak}
           />
         )
       default:
@@ -81,7 +86,11 @@ const mapStateToProps = (state) => {
     return c.name
   })
 
+  // const speak = state.voice.enabled ? Voice.speak : ()=>{}
+  const speak = true ? Voice.speak : ()=>{}
+
   return {
+    speak: speak,
     display: state.game.player.display,
     categories: categoryNames,
     roundName: round.name,

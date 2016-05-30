@@ -12,6 +12,7 @@ export default class Question extends Component {
         nextText="answer"
         previous={this.props.previous}
         voiceText={ `${this.props.category}. ${this.props.value}. ${this.props.question}`}
+        speak={this.props.speak}
       />
     )
   }
