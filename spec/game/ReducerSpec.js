@@ -257,7 +257,8 @@ describe("game/Reducer", ()=> {
       const action = finish()
       const newState = Reducer(state, action)
       expect(newState.completed).toEqual([13, 27, 22])
-
+      expect(newState.player).toEqual(null)
+      expect(newState.board).toEqual(null)
     })
   })
 })

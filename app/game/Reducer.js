@@ -47,6 +47,8 @@ export default (state = initialState, action) => {
     case FINISH:
       return {
         ...state,
+        player: null,
+        board: null,
         completed: state.completed.concat([state.board.id])
       }
 
