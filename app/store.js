@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from "redux";
 import createLogger from "redux-logger";
+import { persistStore, autoRehydrate } from 'redux-persist'
 
 import mainReducer from "./main/Reducer"
 import gameReducer from "./game/Reducer"
@@ -16,8 +17,12 @@ const initializeReducer = (initialState = {}) => {
 }
 
 export let initializeStore = (initialState) => {
-  return createStore(
+  const store = createStore(
     initializeReducer(initialState),
-    applyMiddleware(createLogger())
+    applyMiddleware(createLogger()),
+    autoRehydrate()
   )
+
+  persistStore(store)
+  return store
 }
