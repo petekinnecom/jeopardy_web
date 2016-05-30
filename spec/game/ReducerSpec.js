@@ -1,5 +1,5 @@
 import Reducer from "../../app/game/Reducer"
-import { ANSWER, CATEGORIES, DONE, QUESTION } from "../../app/game/states"
+import { ANSWER, CATEGORIES, DONE, QUESTION, GAME_INFO } from "../../app/game/states"
 import { GAME_LOADED } from "../../app/main/actions"
 import { next, previous, finish} from "../../app/game/actions"
 
@@ -26,7 +26,7 @@ describe("game/Reducer", ()=> {
     expect(newState.existingState).toEqual("stub")
     expect(newState.board).toEqual("boardData")
     expect(newState.player).toEqual({
-      display: CATEGORIES,
+      display: GAME_INFO,
       round: 0,
       category: 0,
       challenge: 0,
@@ -34,6 +34,29 @@ describe("game/Reducer", ()=> {
   })
 
   describe("NEXT action", ()=> {
+    it("moves to the first Categories after displaying start screen", ()=>{
+      const player = {
+        display: GAME_INFO,
+        round: 0,
+        category: 0,
+        challenge: 0,
+      }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        completed: [1, 2]
+      }
+      const action = next()
+      const newState = Reducer(state, action)
+
+      expect(newState.player).toEqual({
+        ...state.player,
+        display: CATEGORIES,
+        history: player
+      })
+    })
+
     it("moves to the first question after displaying the categories", ()=>{
       const player = {
           display: CATEGORIES,

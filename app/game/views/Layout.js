@@ -1,16 +1,30 @@
 import React, { Component } from "react"
 
 export default class Layout extends Component {
+
+  back() {
+    if (this.props.previous) {
+      return (
+        <a href="#" onClick={this.props.previous}>back</a>
+      )
+    }
+    else {
+      return (
+        <span>&nbsp;</span>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
         <div className="layout-header">
           <div className="layout-back">
-            <a href="#" onClick={this.props.previous}>back</a>
+            {this.back()}
           </div>
           <div className="layout-voice">
             <label>Voice:&nbsp;
-              <input type="checkbox" />
+              <input type="checkbox"/>
             </label>
           </div>
           <div>&nbsp;</div>

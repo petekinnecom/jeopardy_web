@@ -1,4 +1,4 @@
-import { ANSWER, CATEGORIES, DONE, QUESTION } from "./states"
+import { ANSWER, CATEGORIES, DONE, QUESTION, GAME_INFO } from "./states"
 import { GAME_LOADED } from "../main/actions"
 import { NEXT, PREVIOUS, FINISH } from "../game/actions"
 
@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
         ...state,
         board: action.board,
         player: {
-          display: CATEGORIES,
+          display: GAME_INFO,
           round: 0,
           category: 0,
           challenge: 0
@@ -58,6 +58,13 @@ export default (state = initialState, action) => {
 function nextPlayer(state) {
   const currentRound = state.board.rounds[state.player.round]
   const currentCategory = currentRound.categories[state.player.category]
+
+  if (state.player.display == GAME_INFO) {
+    return {
+      ...state.player,
+      display: CATEGORIES
+    }
+  }
 
   if (state.player.display == CATEGORIES) {
     return {

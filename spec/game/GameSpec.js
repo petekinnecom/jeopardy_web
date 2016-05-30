@@ -3,7 +3,7 @@ import { mount, shallow } from "enzyme"
 
 import ConnectedGame, { Game } from "../../app/game/Game"
 
-import { ANSWER, DONE, CATEGORIES, QUESTION } from "../../app/game/states"
+import { ANSWER, DONE, CATEGORIES, GAME_INFO, QUESTION } from "../../app/game/states"
 
 describe("game/Game", ()=>{
   it("renders the Categories", ()=>{
@@ -80,5 +80,25 @@ describe("game/Game", ()=>{
       previous: "previousStub",
       next: "finishStub"
     })
+  })
+
+  it("renders GameInfo", ()=>{
+    const component = shallow(
+      <Game
+        display={GAME_INFO}
+        next="nextStub"
+        previous="previousStub"
+        finish="finishStub"
+        airDate="2014-01-31"
+        showNumber="4038"
+      />
+    )
+    expect(component.find("GameInfo").props()).toEqual({
+      previous: null,
+      next: "nextStub",
+      airDate: "2014-01-31",
+      showNumber: "4038"
+    })
+
   })
 })
