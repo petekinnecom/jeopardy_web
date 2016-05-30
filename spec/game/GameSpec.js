@@ -34,8 +34,8 @@ describe("game/Game", ()=>{
         previous="previousStub"
       />
     )
-    expect(component.find("Challenge").props().answer).toEqual(undefined)
-    expect(component.find("Challenge").props()).toEqual({
+    expect(component.find("Question").props().answer).toEqual(undefined)
+    expect(component.find("Question").props()).toEqual({
       question: "questionStub",
       next: "nextStub",
       previous: "previousStub",
@@ -57,7 +57,7 @@ describe("game/Game", ()=>{
         previous="previousStub"
       />
     )
-    expect(component.find("Challenge").props()).toEqual({
+    expect(component.find("Answer").props()).toEqual({
       answer: "answerStub",
       question: "questionStub",
       next: "nextStub",

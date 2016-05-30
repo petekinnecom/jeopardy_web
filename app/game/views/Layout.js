@@ -30,7 +30,10 @@ export default class Layout extends Component {
           <div>&nbsp;</div>
         </div>
 
-        <div className="layout-body">
+        <div
+          className="layout-body"
+          onClick={this.props.onBodyClick}
+        >
           {this.props.children}
         </div>
 

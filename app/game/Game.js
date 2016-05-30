@@ -6,7 +6,8 @@ import { next, previous, finish } from "./actions"
 
 import Categories from "./views/Categories"
 import Done from "./views/Done"
-import Challenge from "./views/Challenge"
+import Answer from "./views/Answer"
+import Question from "./views/Question"
 import GameInfo from "./views/GameInfo"
 
 export class Game extends Component {
@@ -32,7 +33,7 @@ export class Game extends Component {
         )
       case QUESTION:
         return (
-          <Challenge
+          <Question
             category={this.props.category}
             value={this.props.value}
             question={this.props.question}
@@ -43,7 +44,7 @@ export class Game extends Component {
         )
       case ANSWER:
         return (
-          <Challenge
+          <Answer
             category={this.props.category}
             value={this.props.value}
             question={this.props.question}
