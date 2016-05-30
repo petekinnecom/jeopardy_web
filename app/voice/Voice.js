@@ -1,5 +1,7 @@
 window.speechSynthesis.onvoiceschanged = () => {};
 
+export const cancel = window.speechSynthesis.cancel.bind(window.speechSynthesis)
+
 export const speak = (text) => {
   if (!speechSynthesis){
     return;

@@ -10,6 +10,8 @@ import Answer from "./views/Answer"
 import Question from "./views/Question"
 import GameInfo from "./views/GameInfo"
 
+import * as Voice from "../voice/Voice"
+
 export class Game extends Component {
 
   render() {
@@ -95,12 +97,15 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     next: () => {
+      Voice.cancel()
       dispatch(next())
     },
     previous: ()=> {
+      Voice.cancel()
       dispatch(previous())
     },
     finish: () => {
+      Voice.cancel()
       dispatch(finish())
     }
   }
