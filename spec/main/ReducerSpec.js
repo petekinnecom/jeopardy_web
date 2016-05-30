@@ -1,6 +1,7 @@
 import Reducer from "../../app/main/Reducer"
 import { START_MENU, GAME_LOADING, PLAYING_GAME } from "../../app/main/states"
 import { START_GAME, GAME_LOADED } from "../../app/main/actions"
+import { FINISH } from "../../app/game/actions"
 
 describe("main/Reducer", ()=> {
   it("defaults to START_MENU", ()=> {
@@ -35,5 +36,17 @@ describe("main/Reducer", ()=> {
     expect(newState).toEqual(state)
   })
 
+  describe("FINISH action", ()=>{
+    it("shows the menu", () => {
+      const state = {display: PLAYING_GAME}
+      const action = {type: FINISH}
+
+      const newState = Reducer(state, action)
+
+      expect(newState).toEqual({
+        display: START_MENU
+      })
+    })
+  })
 })
 

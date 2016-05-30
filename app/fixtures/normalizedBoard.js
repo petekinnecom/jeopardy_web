@@ -1,5 +1,7 @@
 export const boardFixture = {
+  "id": 22,
   "number": "4680",
+  "airDate": "2004-12-31",
   "rounds": [
     {
       "name": "Jeopardy!",

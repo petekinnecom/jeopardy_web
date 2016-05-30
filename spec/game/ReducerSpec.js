@@ -1,24 +1,29 @@
 import Reducer from "../../app/game/Reducer"
 import { ANSWER, CATEGORIES, DONE, QUESTION } from "../../app/game/states"
 import { GAME_LOADED } from "../../app/main/actions"
-import { next, previous } from "../../app/game/actions"
+import { next, previous, finish} from "../../app/game/actions"
 
 import { boardFixture } from "../../app/fixtures/normalizedBoard"
 
 describe("game/Reducer", ()=> {
-  it("defaults game to empty object", ()=> {
+  it("defaults to a good starting point", ()=> {
     const newState = Reducer()
-    expect(newState).toEqual({})
+    expect(newState).toEqual({
+      completed: []
+    })
   })
 
   it("Begins on the first round, category, challenge", ()=> {
-    const state = {}
+    const state = {
+      existingState: "stub"
+    }
     const action = {
       type: GAME_LOADED,
       board: "boardData"
     }
 
     const newState = Reducer(state, action)
+    expect(newState.existingState).toEqual("stub")
     expect(newState.board).toEqual("boardData")
     expect(newState.player).toEqual({
       display: CATEGORIES,
@@ -210,7 +215,27 @@ describe("game/Reducer", ()=> {
 
       expect(newState.player).toEqual("historyStub")
     })
+  })
 
+  describe("FINISH action", () => {
+    it("stores the game in the completed set", ()=>{
+      const player = {
+        display: DONE,
+        round: 2,
+        category: 0,
+        challenge: 0,
+      }
+
+      const state = {
+        board: boardFixture,
+        player: player,
+        completed: [13, 27]
+      }
+      const action = finish()
+      const newState = Reducer(state, action)
+      expect(newState.completed).toEqual([13, 27, 22])
+
+    })
   })
 })
 

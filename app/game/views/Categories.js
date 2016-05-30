@@ -21,7 +21,7 @@ export default class Categories extends Component {
       <Layout
         previous={this.props.previous}
         next={this.props.next}
-        nextText={this.props.nextText}
+        nextText="next"
       >
         <h3 className="category-title">Categories:</h3>
         {this._names()}

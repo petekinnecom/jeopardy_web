@@ -73,10 +73,12 @@ describe("game/Game", ()=>{
       <Game
         display={DONE}
         previous="previousStub"
+        finish="finishStub"
       />
     )
     expect(component.find("Done").props()).toEqual({
-      previous: "previousStub"
+      previous: "previousStub",
+      next: "finishStub"
     })
   })
 })

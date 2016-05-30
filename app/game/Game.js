@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import {connect} from "react-redux"
 
 import { DONE, CATEGORIES, QUESTION, ANSWER} from "./states"
-import { next, previous } from "./actions"
+import { next, previous, finish } from "./actions"
 
 import Categories from "./views/Categories"
 import Done from "./views/Done"
@@ -17,7 +17,6 @@ export class Game extends Component {
           <Categories
             categories={this.props.categories}
             next={this.props.next}
-            nextText="next"
             previous={this.props.previous}
           />
         )
@@ -48,6 +47,7 @@ export class Game extends Component {
         return (
           <Done
             previous={this.props.previous}
+            next={this.props.finish}
           />
         )
       default:
@@ -82,7 +82,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     next: () => {dispatch(next()) },
-    previous: ()=> {dispatch(previous())}
+    previous: ()=> {dispatch(previous())},
+    finish: () => {dispatch(finish())}
   }
 }
 

@@ -1,8 +1,16 @@
 import { ANSWER, CATEGORIES, DONE, QUESTION } from "./states"
 import { GAME_LOADED } from "../main/actions"
-import { NEXT, PREVIOUS } from "../game/actions"
+import { NEXT, PREVIOUS, FINISH } from "../game/actions"
 
-export default (state = {}, action) => {
+const initialState = {
+  completed: [],
+}
+
+export default (state = initialState, action) => {
+  if (!state) {
+    return initialState
+  }
+
   if (!action) {
     return state
   }
@@ -10,6 +18,7 @@ export default (state = {}, action) => {
   switch (action.type) {
     case GAME_LOADED:
       return {
+        ...state,
         board: action.board,
         player: {
           display: CATEGORIES,
@@ -33,6 +42,12 @@ export default (state = {}, action) => {
       return {
         ...state,
         player: state.player.history
+      }
+
+    case FINISH:
+      return {
+        ...state,
+        completed: state.completed.concat([state.board.id])
       }
 
     default:

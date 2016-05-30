@@ -1,5 +1,6 @@
 export const NEXT = "NEXT"
 export const PREVIOUS = "PREVIOUS"
+export const FINISH = "FINISH"
 
 export const next = () => {
   return {
@@ -13,4 +14,8 @@ export const previous = () => {
   }
 }
 
-
+export const finish = () => {
+  return {
+    type: FINISH
+  }
+}
