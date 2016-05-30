@@ -1,10 +1,17 @@
-window.speechSynthesis.onvoiceschanged = () => {};
+// Load voices if possible
+window.speechSynthesis && (window.speechSynthesis.onvoiceschanged = () => {})
 
-export const cancel = window.speechSynthesis.cancel.bind(window.speechSynthesis)
+export const cancel = () => {
+  if (!window.speechSynthesis) {
+    return
+  }
+
+  window.speechSynthesis.cancel()
+}
 
 export const speak = (text) => {
-  if (!speechSynthesis){
-    return;
+  if (!window.speechSynthesis){
+    return
   }
 
   window.speechSynthesis.cancel()

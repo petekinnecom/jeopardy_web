@@ -28,6 +28,25 @@ export default class Layout extends Component {
     }
   }
 
+  voice() {
+    if (window.speechSynthesis) {
+      return (
+        <label>Voice:&nbsp;
+          <input
+            type="checkbox"
+            defaultChecked={this.props.voiceEnabled}
+            onClick={this.props.toggleVoice}
+          />
+        </label>
+      )
+    }
+    else {
+      return (
+        <span>Voice Unavailable</span>
+      )
+    }
+  }
+
   render() {
     return (
       <div>
@@ -36,13 +55,7 @@ export default class Layout extends Component {
             {this.back()}
           </div>
           <div className="layout-voice">
-            <label>Voice:&nbsp;
-              <input
-                type="checkbox"
-                defaultChecked={this.props.voiceEnabled}
-                onClick={this.props.toggleVoice}
-              />
-            </label>
+            {this.voice()}
           </div>
           <div>&nbsp;</div>
         </div>
