@@ -17,11 +17,14 @@ export default class Categories extends Component {
   }
 
   render(){
+    const voiceText = `Categories. ${this.props.categories.join(".")}`
+
     return(
       <Layout
         previous={this.props.previous}
         next={this.props.next}
         nextText="next"
+        voiceText={voiceText}
       >
         <h3 className="category-title">Categories:</h3>
         {this._names()}

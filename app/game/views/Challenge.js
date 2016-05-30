@@ -1,16 +1,7 @@
 import React, { Component } from "react"
 import Layout from "./Layout"
-import { speak } from "../../voice/Voice"
 
 export default class Challenge extends Component {
-
-  _speakText() {
-    speak(this.props.voiceText)
-  }
-
-  componentDidMount() {
-    speak(this.props.voiceText)
-  }
 
   render() {
     return (
@@ -18,7 +9,7 @@ export default class Challenge extends Component {
         previous={this.props.previous}
         next={this.props.next}
         nextText={this.props.nextText}
-        onBodyClick={this._speakText.bind(this)}
+        voiceText={this.props.voiceText}
       >
         <div className="challenge-value">
           {this.props.value}

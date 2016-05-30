@@ -1,6 +1,19 @@
 import React, { Component } from "react"
+import * as Voice from "../../voice/Voice"
 
 export default class Layout extends Component {
+
+  _speakText() {
+    if (this.props.voiceText) {
+      Voice.speak(this.props.voiceText)
+    }
+  }
+
+  componentDidMount() {
+    if (this.props.voiceText) {
+      Voice.speak(this.props.voiceText)
+    }
+  }
 
   back() {
     if (this.props.previous) {
@@ -32,7 +45,7 @@ export default class Layout extends Component {
 
         <div
           className="layout-body"
-          onClick={this.props.onBodyClick}
+          onClick={this._speakText.bind(this)}
         >
           {this.props.children}
         </div>
