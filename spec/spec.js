@@ -4,3 +4,5 @@ require("./main/ReducerSpec")
 
 require("./game/ReducerSpec")
 require("./game/GameSpec")
+
+require("./api/commsSpec")

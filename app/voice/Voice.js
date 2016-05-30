@@ -12,8 +12,6 @@ export const speak = (text) => {
 
   var msg = new window.SpeechSynthesisUtterance();
   msg.text = text;
-
-  // Set the attributes.
   msg.volume = parseFloat(1);
   msg.rate = parseFloat(0.7);
   msg.pitch = parseFloat(1);
