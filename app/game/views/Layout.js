@@ -4,13 +4,13 @@ import * as Voice from "../../voice/Voice"
 export default class Layout extends Component {
 
   _speakText() {
-    if (this.props.voiceText) {
+    if (this.props.voiceEnabled) {
       Voice.speak(this.props.voiceText)
     }
   }
 
   componentDidMount() {
-    if (this.props.voiceText) {
+    if (this.props.voiceEnabled) {
       Voice.speak(this.props.voiceText)
     }
   }
@@ -37,7 +37,11 @@ export default class Layout extends Component {
           </div>
           <div className="layout-voice">
             <label>Voice:&nbsp;
-              <input type="checkbox"/>
+              <input
+                type="checkbox"
+                defaultChecked={this.props.voiceEnabled}
+                onClick={this.props.toggleVoice}
+              />
             </label>
           </div>
           <div>&nbsp;</div>

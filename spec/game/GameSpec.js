@@ -14,6 +14,8 @@ describe("game/Game", ()=>{
         next="nextStub"
         previous="previousStub"
         speak="speakStub"
+        toggleVoice="toggleVoiceStub"
+        voiceEnabled="voiceEnabledStub"
       />
     )
     expect(component.find("Categories").props()).toEqual({
@@ -21,6 +23,8 @@ describe("game/Game", ()=>{
       next: "nextStub",
       previous: "previousStub",
       speak: "speakStub",
+      toggleVoice: "toggleVoiceStub",
+      voiceEnabled: "voiceEnabledStub",
     })
   })
 
@@ -35,6 +39,8 @@ describe("game/Game", ()=>{
         next="nextStub"
         previous="previousStub"
         speak="speakStub"
+        toggleVoice="toggleVoiceStub"
+        voiceEnabled="voiceEnabledStub"
       />
     )
     expect(component.find("Question").props().answer).toEqual(undefined)
@@ -43,6 +49,8 @@ describe("game/Game", ()=>{
       next: "nextStub",
       previous: "previousStub",
       speak: "speakStub",
+      toggleVoice: "toggleVoiceStub",
+      voiceEnabled: "voiceEnabledStub",
       nextText: "answer",
       category: "categoryStub",
       value: "valueStub",
@@ -60,6 +68,8 @@ describe("game/Game", ()=>{
         next="nextStub"
         previous="previousStub"
         speak="speakStub"
+        toggleVoice="toggleVoiceStub"
+        voiceEnabled="voiceEnabledStub"
       />
     )
     expect(component.find("Answer").props()).toEqual({
@@ -68,6 +78,8 @@ describe("game/Game", ()=>{
       next: "nextStub",
       previous: "previousStub",
       speak: "speakStub",
+      toggleVoice: "toggleVoiceStub",
+      voiceEnabled: "voiceEnabledStub",
       nextText: "next",
       category: "categoryStub",
       value: "valueStub",
@@ -80,12 +92,16 @@ describe("game/Game", ()=>{
         display={DONE}
         previous="previousStub"
         speak="speakStub"
+        toggleVoice="toggleVoiceStub"
+        voiceEnabled="voiceEnabledStub"
         finish="finishStub"
       />
     )
     expect(component.find("Done").props()).toEqual({
       previous: "previousStub",
       speak: "speakStub",
+      toggleVoice: "toggleVoiceStub",
+      voiceEnabled: "voiceEnabledStub",
       next: "finishStub"
     })
   })
@@ -97,6 +113,8 @@ describe("game/Game", ()=>{
         next="nextStub"
         previous="previousStub"
         speak="speakStub"
+        toggleVoice="toggleVoiceStub"
+        voiceEnabled="voiceEnabledStub"
         finish="finishStub"
         airDate="2014-01-31"
         showNumber="4038"
@@ -108,6 +126,8 @@ describe("game/Game", ()=>{
       airDate: "2014-01-31",
       showNumber: "4038",
       speak: "speakStub",
+      toggleVoice: "toggleVoiceStub",
+      voiceEnabled: "voiceEnabledStub",
     })
 
   })

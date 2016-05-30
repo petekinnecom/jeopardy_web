@@ -6,3 +6,5 @@ require("./game/ReducerSpec")
 require("./game/GameSpec")
 
 require("./api/commsSpec")
+
+require("./voice/ReducerSpec")

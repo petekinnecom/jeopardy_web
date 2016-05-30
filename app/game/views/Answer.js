@@ -14,6 +14,8 @@ export default class Answer extends Component {
         previous={this.props.previous}
         voiceText={this.props.answer}
         speak={this.props.speak}
+        toggleVoice={this.props.toggleVoice}
+        voiceEnabled={this.props.voiceEnabled}
       />
     )
   }

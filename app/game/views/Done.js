@@ -10,6 +10,8 @@ export default class Done extends Component {
         nextText="menu"
         voiceText="Thanks for playing"
         speak={this.props.speak}
+        toggleVoice={this.props.toggleVoice}
+        voiceEnabled={this.props.voiceEnabled}
       >
         <h1>Thanks for playing</h1>
       </Layout>

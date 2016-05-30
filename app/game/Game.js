@@ -11,6 +11,7 @@ import Question from "./views/Question"
 import GameInfo from "./views/GameInfo"
 
 import * as Voice from "../voice/Voice"
+import { toggleVoice } from "../voice/actions"
 
 export class Game extends Component {
 
@@ -24,6 +25,8 @@ export class Game extends Component {
             airDate={this.props.airDate}
             showNumber={this.props.showNumber}
             speak={this.props.speak}
+            toggleVoice={this.props.toggleVoice}
+            voiceEnabled={this.props.voiceEnabled}
           />
         )
       case CATEGORIES:
@@ -33,6 +36,8 @@ export class Game extends Component {
             next={this.props.next}
             previous={this.props.previous}
             speak={this.props.speak}
+            toggleVoice={this.props.toggleVoice}
+            voiceEnabled={this.props.voiceEnabled}
           />
         )
       case QUESTION:
@@ -45,6 +50,8 @@ export class Game extends Component {
             nextText="answer"
             previous={this.props.previous}
             speak={this.props.speak}
+            toggleVoice={this.props.toggleVoice}
+            voiceEnabled={this.props.voiceEnabled}
           />
         )
       case ANSWER:
@@ -58,6 +65,8 @@ export class Game extends Component {
             nextText="next"
             previous={this.props.previous}
             speak={this.props.speak}
+            toggleVoice={this.props.toggleVoice}
+            voiceEnabled={this.props.voiceEnabled}
           />
         )
       case DONE:
@@ -66,6 +75,8 @@ export class Game extends Component {
             previous={this.props.previous}
             next={this.props.finish}
             speak={this.props.speak}
+            toggleVoice={this.props.toggleVoice}
+            voiceEnabled={this.props.voiceEnabled}
           />
         )
       default:
@@ -87,10 +98,11 @@ const mapStateToProps = (state) => {
   })
 
   // const speak = state.voice.enabled ? Voice.speak : ()=>{}
-  const speak = true ? Voice.speak : ()=>{}
+  const speak = true ? Voice.speak : ()=> {}
 
   return {
     speak: speak,
+    voiceEnabled: state.voice.enabled,
     display: state.game.player.display,
     categories: categoryNames,
     roundName: round.name,
@@ -116,6 +128,10 @@ const mapDispatchToProps = (dispatch) => {
     finish: () => {
       Voice.cancel()
       dispatch(finish())
+    },
+    toggleVoice: () => {
+      Voice.cancel()
+      dispatch(toggleVoice())
     }
   }
 }

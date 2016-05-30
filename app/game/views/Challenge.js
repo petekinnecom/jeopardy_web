@@ -10,6 +10,8 @@ export default class Challenge extends Component {
         next={this.props.next}
         nextText={this.props.nextText}
         voiceText={this.props.voiceText}
+        voiceEnabled={this.props.voiceEnabled}
+        toggleVoice={this.props.toggleVoice}
       >
         <div className="challenge-value">
           {this.props.value}

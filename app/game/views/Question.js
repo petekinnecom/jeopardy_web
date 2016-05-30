@@ -13,6 +13,8 @@ export default class Question extends Component {
         previous={this.props.previous}
         voiceText={ `${this.props.category}. ${this.props.value}. ${this.props.question}`}
         speak={this.props.speak}
+        toggleVoice={this.props.toggleVoice}
+        voiceEnabled={this.props.voiceEnabled}
       />
     )
   }
