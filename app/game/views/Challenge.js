@@ -21,8 +21,10 @@ export default class Challenge extends Component {
           {this.props.category}
         </div>
 
-        <div className="challenge-question">
-          {this.props.question}
+        <div
+          className="challenge-question"
+          dangerouslySetInnerHTML={{__html: this.props.question}}
+        >
         </div>
 
         <div className="challenge-answer">
