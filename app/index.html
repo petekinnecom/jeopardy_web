@@ -43,10 +43,26 @@
       }
 
       .layout-footer {
-        position: fixed;
-        bottom: 1rem;
-        right: 1rem;
+        display: flex;
         font-size: 4rem;
+        width: 100%;
+      }
+
+      @media (max-width: 800px) {
+        .layout-footer {
+          position: absolute;
+          bottom: 1rem;
+        }
+      }
+
+      .layout-footer-next {
+        flex: 1;
+        text-align: center;
+      }
+
+      .layout-footer-read {
+        flex: 1;
+        text-align: center;
       }
 
       .challenge-category {

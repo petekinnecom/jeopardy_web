@@ -4,9 +4,7 @@ import * as Voice from "../../voice/Voice"
 export default class Layout extends Component {
 
   _speakText() {
-    if (this.props.voiceEnabled) {
-      Voice.speak(this.props.voiceText)
-    }
+    Voice.speak(this.props.voiceText)
   }
 
   componentDidMount() {
@@ -15,7 +13,7 @@ export default class Layout extends Component {
     }
   }
 
-  back() {
+  _back() {
     if (this.props.previous) {
       return (
         <a href="#" onClick={this.props.previous}>back</a>
@@ -28,7 +26,7 @@ export default class Layout extends Component {
     }
   }
 
-  voice() {
+  _voice() {
     if (window.speechSynthesis) {
       return (
         <label>Voice:&nbsp;
@@ -47,15 +45,48 @@ export default class Layout extends Component {
     }
   }
 
+  _footer() {
+    const next = (
+      <span className="layout-footer-next">
+        <a
+          href="#"
+          onClick={this.props.next}
+        >
+          next
+        </a>
+      </span>
+    )
+
+    const read = (
+      <span className="layout-footer-read">
+        <a
+          href="#"
+          onClick={this._speakText.bind(this)}
+        >
+          read
+        </a>
+      </span>
+    )
+
+    return (
+      <div className="layout-footer">
+        {window.speechSynthesis ? read : ""}
+        {next}
+      </div>
+    )
+
+
+  }
+
   render() {
     return (
       <div>
         <div className="layout-header">
           <div className="layout-back">
-            {this.back()}
+            {this._back()}
           </div>
           <div className="layout-voice">
-            {this.voice()}
+            {this._voice()}
           </div>
           <div>&nbsp;</div>
         </div>
@@ -66,16 +97,7 @@ export default class Layout extends Component {
         >
           {this.props.children}
         </div>
-
-        <div className="layout-footer">
-          <a
-            href="#"
-            className="layout-next"
-            onClick={this.props.next}
-          >
-            {this.props.nextText}...
-          </a>
-        </div>
+        {this._footer()}
       </div>
     )
   }
