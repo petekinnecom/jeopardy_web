@@ -1,3 +1,5 @@
+import 'whatwg-fetch'
+
 const AVAILABLE_GAMES = 3640
 
 export const fetchRandomGame = (completedGames) => {
