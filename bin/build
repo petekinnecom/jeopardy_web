@@ -1,0 +1,7 @@
+#!/bin/bash -ex
+
+# because /shows/ are static, we only copy application.js, index.html.
+# new files must be manually added
+
+rm -rf build/*
+bin/webpack
