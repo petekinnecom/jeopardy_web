@@ -5,3 +5,4 @@
 
 rm -rf build/*
 bin/webpack
+cp -r backend/shows build/

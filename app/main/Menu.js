@@ -2,13 +2,13 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import Link from "../shared/Link"
-import { startGame, gameLoaded, loadFailed} from "./actions"
+import { startGame, reservesReady, loadFailed} from "./actions"
 import * as Api from "../api/comms"
 
 export class Menu extends Component {
 
   _startGame() {
-    this.props.startGame(this.props.gamePromise)
+    this.props.startGame(this.props.reservesPromise)
   }
 
   render() {
@@ -23,21 +23,21 @@ export class Menu extends Component {
 
 const mapStateToProps = (state) => {
   let completedGames = state.game.completed
-  let gamePromise = Api.fetchRandomGame(completedGames)
+  let reservesPromise = Api.refillReserves(completedGames, state.game.reserves)
 
   return {
     errorText: state.main.errorText,
-    gamePromise: gamePromise
+    reservesPromise: reservesPromise
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    startGame: (gamePromise) => {
+    startGame: (reservesPromise) => {
       dispatch(startGame())
-      gamePromise
-        .then((board) => {
-          dispatch(gameLoaded(board))
+      reservesPromise
+        .then((boards) => {
+          dispatch(reservesReady(boards))
         })
         .catch((e)=> {
           dispatch(loadFailed())

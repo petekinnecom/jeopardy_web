@@ -1,9 +1,10 @@
 import { ANSWER, CATEGORIES, DONE, QUESTION, GAME_INFO } from "./states"
-import { GAME_LOADED } from "../main/actions"
+import { RESERVES_READY } from "../main/actions"
 import { NEXT, PREVIOUS, FINISH } from "../game/actions"
 
 const initialState = {
   completed: [],
+  reserves: [],
 }
 
 export default (state = initialState, action) => {
@@ -16,10 +17,11 @@ export default (state = initialState, action) => {
   }
 
   switch (action.type) {
-    case GAME_LOADED:
+    case RESERVES_READY:
       return {
         ...state,
-        board: action.board,
+        board: action.boards[0], //TODO: don't mutate. just lazy here
+        reserves: action.boards.slice(1, action.boards.length),
         player: {
           display: GAME_INFO,
           round: 0,

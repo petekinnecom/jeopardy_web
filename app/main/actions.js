@@ -1,11 +1,11 @@
 export const START_GAME = "START_GAME"
-export const GAME_LOADED = "GAME_LOADED"
+export const RESERVES_READY = "RESERVES_READY"
 export const LOAD_FAILED = "LOAD_FAILED"
 
-export const gameLoaded = (board)=> {
+export const reservesReady = (boards)=> {
   return {
-    type: GAME_LOADED,
-    board: board
+    type: RESERVES_READY,
+    boards: boards
   }
 }
 
