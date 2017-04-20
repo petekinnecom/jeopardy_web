@@ -8,7 +8,7 @@ import * as Api from "../api/comms"
 export class Menu extends Component {
 
   _startGame() {
-    this.props.startGame(this.props.reservesPromise)
+    this.props.startGame(this.props.completedGames, this.props.reserves)
   }
 
   render() {
@@ -23,17 +23,19 @@ export class Menu extends Component {
 
 const mapStateToProps = (state) => {
   let completedGames = state.game.completed
-  let reservesPromise = Api.refillReserves(completedGames, state.game.reserves)
 
   return {
     errorText: state.main.errorText,
-    reservesPromise: reservesPromise
+    completedGames: state.game.completed,
+    reserves: state.game.reserves
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    startGame: (reservesPromise) => {
+    startGame: (completedGames, reserves) => {
+      let reservesPromise = Api.refillReserves(completedGames, reserves)
+
       dispatch(startGame())
       reservesPromise
         .then((boards) => {
