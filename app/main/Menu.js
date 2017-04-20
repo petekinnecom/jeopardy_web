@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 
 import Link from "../shared/Link"
-import { startGame, gameLoaded } from "./actions"
+import { startGame, gameLoaded, loadFailed} from "./actions"
 import * as Api from "../api/comms"
 
 export class Menu extends Component {
@@ -14,6 +14,7 @@ export class Menu extends Component {
   render() {
     return (
       <div>
+        {this.props.errorText && <div>{this.props.errorText}</div>}
         <Link onClick={this._startGame.bind(this)}>Start New Game</Link>
       </div>
     )
@@ -25,6 +26,7 @@ const mapStateToProps = (state) => {
   let gamePromise = Api.fetchRandomGame(completedGames)
 
   return {
+    errorText: state.main.errorText,
     gamePromise: gamePromise
   }
 }
@@ -37,7 +39,9 @@ const mapDispatchToProps = (dispatch) => {
         .then((board) => {
           dispatch(gameLoaded(board))
         })
-        // .catch((e)=> {window.alert(e)})
+        .catch((e)=> {
+          dispatch(loadFailed())
+        })
     }
   }
 }
